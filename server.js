@@ -5,6 +5,7 @@ require('dotenv').config()
 const MongoDBClient = new MongoClient(process.env.MONGO_URI)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Сервер работает!');
