@@ -24,7 +24,8 @@ app.post("/api/users", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
-        await collection.insertOne({name: "Joe", age: 11})
+        const {name, age} = req.body;
+        await collection.insertOne({name: name, age: age})
     }
     catch(err){
         console.error(err)
