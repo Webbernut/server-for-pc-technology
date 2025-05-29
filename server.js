@@ -11,7 +11,6 @@ app.get('/', (req, res) => {
 app.get("/api/users", async(req, res)=>{
     try{
         await MongoDBClient.connect()
-        console.log("успешное подключение")
         const collection = MongoDBClient.db("itemsData").collection("items")
         const items = await collection.find({}).toArray()
         res.status(200).json(items)
@@ -19,6 +18,19 @@ app.get("/api/users", async(req, res)=>{
     catch(err){
         res.status(500).json({ error: 'Ошибка сервера' });
     }
+})
+
+app.post("/api/users", async(req, res)=>{
+    try{
+        await MongoDBClient.connect()
+        const collection = MongoDBClient.db("itemsData").collection("items")
+        await collection.insertOne({name: "Joe", age: 11})
+    }
+    catch(err){
+        console.error(err)
+    }
+    
+  
 })
 
 app.listen(process.env.PORT, () => {
