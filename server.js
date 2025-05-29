@@ -3,6 +3,8 @@ const {MongoClient} = require('mongodb')
 const app = express()
 require('dotenv').config()
 const MongoDBClient = new MongoClient(process.env.MONGO_URI)
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.get('/', (req, res) => {
     res.send('Сервер работает!');
@@ -26,7 +28,7 @@ app.post("/api/users", async(req, res)=>{
         const collection = MongoDBClient.db("itemsData").collection("items")
         const itemsValue = req.body;
         await collection.insertOne({name: itemsValue.name, age: itemsValue.age})
-        res.send()
+        res.send("confirm result")
     }
     catch(err){
         console.error(err)
