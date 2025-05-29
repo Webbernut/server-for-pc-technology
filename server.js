@@ -21,6 +21,6 @@ app.get("/api/coveringType", async(req, res)=>{
     }
 })
 
-app.listen(3000, () => {
-  console.log(`Сервер запущен на http://localhost:${3000}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Сервер запущен`);
 });
