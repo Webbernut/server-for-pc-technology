@@ -1,5 +1,6 @@
 const express = require("express")
 const {MongoClient} = require('mongodb')
+const cors = require("cors")
 const app = express()
 require('dotenv').config()
 const MongoDBClient = new MongoClient(process.env.MONGO_URI)
