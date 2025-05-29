@@ -27,7 +27,7 @@ app.post("/api/users", async(req, res)=>{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
         const itemsValue = req.body;
-        await collection.insertOne({id: itemsValue.id,
+        await collection.insertOne({id: String(itemsValue.id),
   name: itemsValue.name,
   power: itemsValue.power,
   categoryDefence: itemsValue.categoryDefence,
