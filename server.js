@@ -32,15 +32,15 @@ app.post("/api/users", async(req, res)=>{
   power: itemsValue.power,
   categoryDefence: itemsValue.categoryDefence,
   electricalEquipmentClass: itemsValue.electricalEquipmentClass,
-  voltage: itemsValue.voltage
-  thermostat: itemsValue.thermostat
-  fastening: itemsValue.fastening
-  climaticVersion: itemsValue.climaticVersion
-  materialOfManufacture: itemsValue.materialOfManufacture
-  restrictionMAXT: itemsValue.restrictionMAXT
-  technicalConditions: itemsValue.technicalConditions
-  barcodeRegister: itemsValue.barcodeRegister
-  date: itemsValue.date
+  voltage: itemsValue.voltage,
+  thermostat: itemsValue.thermostat,
+  fastening: itemsValue.fastening,
+  climaticVersion: itemsValue.climaticVersion,
+  materialOfManufacture: itemsValue.materialOfManufacture,
+  restrictionMAXT: itemsValue.restrictionMAXT,
+  technicalConditions: itemsValue.technicalConditions,
+  barcodeRegister: itemsValue.barcodeRegister,
+  date: itemsValue.date,
   note: itemsValue.note})
         res.send("confirm result")
     }
