@@ -2,6 +2,7 @@ const express = require("express")
 const {MongoClient} = require('mongodb')
 const cors = require("cors")
 const app = express()
+const { ObjectId } = require('mongodb');
 require('dotenv').config()
 const MongoDBClient = new MongoClient(process.env.MONGO_URI)
 app.use(express.urlencoded({ extended: true }))
@@ -25,7 +26,7 @@ app.get("/api/item-active", async(req, res)=>{
     }
 })
 
-app.delete("/api/delete-item-active/:id", async(req, res)=>{
+app.delete("/api/item-active/:id", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
@@ -39,7 +40,7 @@ app.delete("/api/delete-item-active/:id", async(req, res)=>{
   
 })
 
-app.post("/api/insert-item-active", async(req, res)=>{
+app.post("/api/item-active", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
