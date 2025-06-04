@@ -25,7 +25,7 @@ app.get("/api/item-active", async(req, res)=>{
     }
 })
 
-app.post("/api/delete-item-active", async(req, res)=>{
+app.delete("/api/delete-item-active", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
