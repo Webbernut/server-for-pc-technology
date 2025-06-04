@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 app.get("/api/item-active", async(req, res)=>{
     try{
+        
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items-active")
         const items = await collection.find({}).toArray()
@@ -30,6 +31,8 @@ app.put("/api/item-active/:id", async (req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items-active")
+        console.log(req.params.id)
+        console.log(req.body)
         await collection.updateOne({_id: new ObjectId(req.params.id)}, {$set:{...req.body}})
     }
     catch(err){
