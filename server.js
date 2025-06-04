@@ -30,7 +30,7 @@ app.put("/api/item-active/:id", async (req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items-active")
-        await collection.updateOne({_id: new ObjectId(req.params.id)}, {$set: {...req.body})
+        await collection.updateOne({_id: new ObjectId(req.params.id)}, {$set: {...req.body}})
     }
     catch(err){
         res.status(500).json({ error: 'Ошибка сервера' });
