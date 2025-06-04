@@ -25,12 +25,11 @@ app.get("/api/item-active", async(req, res)=>{
     }
 })
 
-app.delete("/api/delete-item-active", async(req, res)=>{
+app.delete("/api/delete-item-active/:id", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
-        const itemsValue = req.body;
-        await collection.deleteOne({_id: itemsValue._id})
+        await collection.deleteOne({_id: new ObjectId(req.params.id)})
         res.send("confirm result")
     }
     catch(err){
