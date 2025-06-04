@@ -26,6 +26,18 @@ app.get("/api/item-active", async(req, res)=>{
     }
 })
 
+app.put("/api/item-active/:id", awsync (req, res)=>{
+    try{
+        await MongoDBClient.connect()
+        const collection = MongoDBClient.db("itemsData").collection("items-active")
+        const items = await collection.replaceOne({_id: new ObjectId(req.params.id)}, req.body)
+        res.status(200).json(items)
+    }
+    catch(err){
+        res.status(500).json({ error: 'Ошибка сервера' });
+    }
+})
+
 app.post("/api/item-disabled", async(req, res)=>{
     try{
         await MongoDBClient.connect()
