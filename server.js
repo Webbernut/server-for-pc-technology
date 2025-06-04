@@ -26,7 +26,7 @@ app.get("/api/item-active", async(req, res)=>{
     }
 })
 
-app.put("/api/item-active/:id", awsync (req, res)=>{
+app.put("/api/item-active/:id", async (req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items-active")
