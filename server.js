@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.send('Сервер работает!');
 });
 
-app.get("/api/users", async(req, res)=>{
+app.get("/api/item-active", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
@@ -25,7 +25,22 @@ app.get("/api/users", async(req, res)=>{
     }
 })
 
-app.post("/api/users", async(req, res)=>{
+app.post("/api/delete-item-active", async(req, res)=>{
+    try{
+        await MongoDBClient.connect()
+        const collection = MongoDBClient.db("itemsData").collection("items")
+        const itemsValue = req.body;
+        await collection.deleteOne({_id: itemsValue._id})
+        res.send("confirm result")
+    }
+    catch(err){
+        console.error(err)
+    }
+    
+  
+})
+
+app.post("/api/insert-item-active", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items")
