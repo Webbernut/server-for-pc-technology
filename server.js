@@ -34,7 +34,7 @@ app.put("/api/item-active/:id", async (req, res)=>{
         console.log(req.params.id)
         console.log(req.body)
         await collection.updateOne({_id: new ObjectId(req.params.id)}, {$set:{...req.body}})
-        res.status(200).json({message: "Успех"})
+        res.status(200).json({success: true})
     }
     catch(err){
         res.status(500).json({ error: `Ошибка сервера ${err}` });
