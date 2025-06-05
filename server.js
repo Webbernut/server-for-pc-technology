@@ -113,6 +113,18 @@ app.post("/api/item-active", async(req, res)=>{
   
 })
 
+app.get("/api/item-type", async (req,res)=>{
+    try{
+        await MongoDBClient.connect()
+        const collection = MongoDBClient.db("itemsData").collection("items-type")
+        const itemsType = await collection.find({}).toArray()
+        res.status(200).json(itemsType)
+    }
+    catch(err){
+        console.error(err)
+    }
+})
+
 app.listen(process.env.PORT, () => {
   console.log(`Сервер запущен`);
 });
