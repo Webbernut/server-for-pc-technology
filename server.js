@@ -74,22 +74,8 @@ app.post("/api/item-active", async(req, res)=>{
     try{
         await MongoDBClient.connect()
         const collection = MongoDBClient.db("itemsData").collection("items-active")
-        const itemsValue = req.body;
-        await collection.insertOne({id: itemsValue.id,
-  name: itemsValue.name,
-  power: itemsValue.power,
-  categoryDefence: itemsValue.categoryDefence,
-  electricalEquipmentClass: itemsValue.electricalEquipmentClass,
-  voltage: itemsValue.voltage,
-  thermostat: itemsValue.thermostat,
-  fastening: itemsValue.fastening,
-  climaticVersion: itemsValue.climaticVersion,
-  materialOfManufacture: itemsValue.materialOfManufacture,
-  restrictionMAXT: itemsValue.restrictionMAXT,
-  technicalConditions: itemsValue.technicalConditions,
-  barcodeRegister: itemsValue.barcodeRegister,
-  date: itemsValue.date,
-  note: itemsValue.note})
+        console.log(req.body)
+        await collection.insertOne({...req.body})
         res.send("confirm result")
     }
     catch(err){
